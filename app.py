@@ -66,3 +66,27 @@ def confirmar_asistencia():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+    # Crear las tablas automáticamente al arrancar si no existen
+with app.app_context():
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS public.familias (
+                id SERIAL PRIMARY KEY,
+                nombre_familia VARCHAR(255) NOT NULL,
+                total_asistentes INT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS public.integrantes (
+                id SERIAL PRIMARY KEY,
+                familia_id INT REFERENCES public.familias(id) ON DELETE CASCADE,
+                nombre_completo VARCHAR(255) NOT NULL
+            );
+        """)
+        conn.commit()
+        cur.close()
+        conn.close()
+        print("Tablas creadas o verificadas exitosamente en la base de datos.")
+    except Exception as e:
+        print("Error al crear tablas automáticamente:", e)
