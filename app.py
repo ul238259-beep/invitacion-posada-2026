@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Función para conectar a la base de datos (lee la nube o usa local si no existe)
 def get_db_connection():
     # Render nos dará una variable llamada DATABASE_URL
-    database_url = os.environ.get("DATABASE_URL")
+    database_url = os.environ.get("postgresql://postgresql:3mTBUHUJs3HZtpsh70zk2eyXrOsHisVe@dpg-dblo8hd6e07s739gu6b0-a/posada_b4gz")
     if database_url:
         return get_db_connection(database_url)
     else:
