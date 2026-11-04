@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación - Nuestra Posada Navideña 2026</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: {
+              DEFAULT: '#4A0E17',
+              dark: '#2B070D',
+              light: '#6B1824'
+            },
+            pine: '#0F2C1F',
+            gold: {
+              DEFAULT: '#D4AF37',
+              light: '#F3E5AB',
+              dark: '#AA820A'
+            }
+          },
+          fontFamily: {
+            title: ['Cinzel', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #2B070D;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 3px;
+    }
+
+    /* Background Animation Overlay */
+    .bg-lights {
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                  radial-gradient(circle at 20% 80%, rgba(107, 24, 36, 0.4) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 90%, rgba(15, 44, 31, 0.4) 0%, transparent 50%);
+    }
+
+    /* Glassmorphism Styling */
+    .glass-card {
+      background: rgba(43, 7, 13, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    .glass-card-gold {
+      background: rgba(212, 175, 55, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+
+    /* Metallic Text Effect */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF0B3 0%, #D4AF37 50%, #997A15 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Canvas overlay */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body class="bg-burgundy-dark text-slate-100 font-sans min-h-screen relative flex justify-center items-center overflow-x-hidden selection:bg-gold selection:text-burgundy-dark">
+
+  <!-- Background Particle Canvas (Gold Snow & Lights) -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Mobile Story Container Wrapper -->
+  <main class="w-full max-w-md min-h-screen md:min-h-[92vh] md:my-6 md:rounded-3xl bg-lights relative shadow-2xl overflow-y-auto border border-gold/20 flex flex-col justify-between z-10 pb-12">
+    
+    <!-- HEADER / PORTADA STORY -->
+    <header class="relative px-6 pt-12 pb-8 text-center flex flex-col items-center justify-center">
+      <!-- Decorative Top Festive Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/40 bg-burgundy/60 text-gold-light text-xs uppercase tracking-widest mb-4 shadow-lg">
+        <i class="fa-solid font-star text-gold text-xs"></i>
+        <span>Estás Invitado</span>
+        <i class="fa-solid font-star text-gold text-xs"></i>
+      </div>
+
+      <!-- Main Titles -->
+      <h3 class="font-script text-gold text-3xl md:text-4xl mb-1 drop-shadow">Nuestra Tradicional</h3>
+      <h1 class="font-title text-3xl md:text-4xl font-extrabold tracking-wider uppercase gold-gradient-text leading-tight mb-3 drop-shadow-md">
+        Posada Navideña
+      </h1>
+
+      <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent my-2"></div>
+
+      <!-- Description / Welcome -->
+      <p class="text-xs md:text-sm text-slate-200 font-light leading-relaxed max-w-xs mt-2 italic">
+        "Celebremos juntos esta época de paz, alegría y tradición. Acompáñanos a compartir ponche, villancicos, piñata y momentos inolvidables."
+      </p>
+    </header>
+
+    <!-- MAIN CONTENT BODY -->
+    <section class="px-5 space-y-6">
+
+      <!-- FECHA & HORA DETALLES -->
+      <div class="glass-card rounded-2xl p-5 text-center shadow-xl relative overflow-hidden">
+        <div class="absolute -right-4 -top-4 text-gold/10 text-7xl font-title">
+          <i class="fa-solid fa-tree"></i>
+        </div>
+        <div class="flex items-center justify-center gap-3 text-gold mb-3">
+          <i class="fa-regular fa-calendar-days text-xl"></i>
+          <span class="font-title font-bold text-lg text-slate-100 tracking-wide">Sábado, 19 de Diciembre 2026</span>
+        </div>
+        <div class="flex items-center justify-center gap-2 text-slate-300 text-sm font-semibold bg-burgundy/80 py-2 px-4 rounded-xl border border-gold/20 inline-block mx-auto">
+          <i class="fa-regular fa-clock text-gold"></i>
+          <span>21:00 HRS (9:00 PM)</span>
+        </div>
+      </div>
+
+      <!-- CONTEO REGRESIVO (COUNTDOWN) -->
+      <div class="glass-card-gold rounded-2xl p-5 text-center shadow-lg border border-gold/40">
+        <h4 class="text-xs uppercase tracking-widest text-gold font-bold mb-3">
+          <i class="fa-solid fa-hourglass-half mr-1"></i> Falta Muy Poco
+        </h4>
+        <div class="grid grid-cols-4 gap-2 text-center" id="countdown">
+          <div class="bg-burgundy-dark/80 p-2.5 rounded-xl border border-gold/30 shadow">
+            <span id="cd-days" class="block font-title font-bold text-xl md:text-2xl text-gold">00</span>
+            <span class="text-[10px] uppercase text-slate-400">Días</span>
+          </div>
+          <div class="bg-burgundy-dark/80 p-2.5 rounded-xl border border-gold/30 shadow">
+            <span id="cd-hours" class="block font-title font-bold text-xl md:text-2xl text-gold">00</span>
+            <span class="text-[10px] uppercase text-slate-400">Horas</span>
+          </div>
+          <div class="bg-burgundy-dark/80 p-2.5 rounded-xl border border-gold/30 shadow">
+            <span id="cd-minutes" class="block font-title font-bold text-xl md:text-2xl text-gold">00</span>
+            <span class="text-[10px] uppercase text-slate-400">Min</span>
+          </div>
+          <div class="bg-burgundy-dark/80 p-2.5 rounded-xl border border-gold/30 shadow">
+            <span id="cd-seconds" class="block font-title font-bold text-xl md:text-2xl text-gold">00</span>
+            <span class="text-[10px] uppercase text-slate-400">Seg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÓN ACCIÓN (SOLO CALENDAR) -->
+      <div class="w-full">
+        <a id="btn-add-calendar" href="#" target="_blank" class="glass-card hover:bg-gold/20 transition-all p-3.5 rounded-xl flex items-center justify-center gap-2 text-xs font-semibold text-slate-100 border border-gold/30 text-center active:scale-95 shadow-md w-full">
+          <i class="fa-regular fa-calendar-plus text-gold text-base"></i>
+          <span>Agendar Evento en Google Calendar</span>
+        </a>
+      </div>
+
+      <!-- FORMULARIO RSVP DE CONFIRMACIÓN -->
+      <div class="glass-card rounded-2xl p-5 shadow-2xl relative border border-gold/30">
+        <div class="text-center mb-4">
+          <span class="text-gold text-2xl font-script block">Confirma tu asistencia</span>
+          <h3 class="font-title text-lg font-bold text-slate-100">Registro de Asistentes</h3>
+          <p class="text-[11px] text-slate-400 mt-1">Favor de confirmar antes del 15 de Diciembre</p>
+        </div>
+
+        <form id="rsvp-form" class="space-y-4">
+          <!-- Nombre de Familia o Contacto -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1" for="family-name">
+              Familia o Nombre Representante:
+            </label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gold/60">
+                <i class="fa-solid fa-users"></i>
+              </span>
+              <input type="text" id="family-name" required placeholder="Ej. Familia García / Juan Pérez" class="w-full pl-9 pr-3 py-2.5 bg-burgundy-dark/90 border border-gold/30 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-gold transition-colors placeholder-slate-500">
+            </div>
+          </div>
+
+          <!-- Número de Asistentes -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1" for="attendee-count">
+              Número total de personas que asistirán:
+            </label>
+            <select id="attendee-count" class="w-full px-3 py-2.5 bg-burgundy-dark/90 border border-gold/30 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-gold transition-colors">
+              <option value="1">1 Persona</option>
+              <option value="2">2 Personas</option>
+              <option value="3">3 Personas</option>
+              <option value="4">4 Personas</option>
+              <option value="5">5 Personas</option>
+              <option value="6">6+ Personas</option>
+            </select>
+          </div>
+
+          <!-- Nombres de Integrantes (Generados Dinámicamente) -->
+          <div id="names-container" class="space-y-2 pt-1 border-t border-gold/10">
+            <!-- Dynamic Inputs inserted here by JavaScript -->
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="submit-rsvp-btn" disabled class="w-full py-3 mt-3 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-burgundy-dark font-title font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 opacity-50 cursor-not-allowed">
+            <span>Confirmar Asistencia</span>
+          </button>
+        </form>
+
+        <!-- Notification Message Box -->
+        <div id="rsvp-message" class="hidden mt-4 p-3 rounded-xl text-xs text-center border"></div>
+      </div>
+
+      <!-- BOTÓN / ACORDEÓN PARA MOSTRAR ASISTENTES CONFIRMADAS -->
+      <div class="glass-card rounded-2xl overflow-hidden shadow-lg border border-gold/20">
+        <button id="toggle-attendees" class="w-full px-5 py-4 flex items-center justify-between text-left text-xs font-bold text-gold hover:bg-gold/5 transition-colors">
+          <span class="flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-sm"></i>
+            <span>Ver Lista de Confirmados (<span id="total-guests-count">0</span>)</span>
+          </span>
+          <i id="chevron-icon" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+        </button>
+
+        <!-- Lista Desplegable -->
+        <div id="attendees-list-container" class="hidden px-5 pb-5 pt-1 space-y-3 border-t border-gold/10 max-h-60 overflow-y-auto">
+          <div id="attendees-empty" class="text-center text-slate-400 text-xs py-3 italic">
+            Aún no hay asistentes registrados. ¡Sé el primero!
+          </div>
+          <div id="attendees-list" class="space-y-2">
+            <!-- Dynamic confirmation items -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER FESTIVO -->
+    <footer class="mt-8 text-center text-[11px] text-slate-400 px-4 space-y-2">
+      <div class="flex justify-center items-center gap-3 text-gold/60 text-sm">
+        <i class="fa-solid fa-glass-water font-snowflake"></i>
+        <i class="fa-solid fa-gift"></i>
+        <i class="fa-solid fa-snowflake"></i>
+      </div>
+      <p class="font-script text-lg text-gold-light">¡Te esperamos para celebrar juntos!</p>
+      <p class="text-[10px] text-slate-500">Posada Navideña 2026 • San Ángel, Ciudad de México</p>
+    </footer>
+
+  </main>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // TARGET EVENT DATE: 19 de Diciembre de 2026 a las 21:00:00
+    const TARGET_DATE = new Date('December 19, 2026 21:00:00').getTime();
+
+    // 1. COUNTDOWN LOGIC
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = TARGET_DATE - now;
+
+      if (difference <= 0) {
+        document.getElementById('countdown').innerHTML = `
+          <div class="col-span-4 py-2 text-center text-gold font-title font-bold text-lg">
+            ¡La Posada ha Comenzado! 🎄✨
+          </div>`;
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 2. DYNAMIC NAME INPUTS GENERATOR FOR RSVP & VALIDATION
+    const familyNameInput = document.getElementById('family-name');
+    const attendeeSelect = document.getElementById('attendee-count');
+    const namesContainer = document.getElementById('names-container');
+    const submitBtn = document.getElementById('submit-rsvp-btn');
+
+    function checkFormValidity() {
+      const familyName = familyNameInput.value.trim();
+      const memberInputs = document.querySelectorAll('.member-name');
+      let allMembersFilled = true;
+
+      memberInputs.forEach(input => {
+        if (input.value.trim() === '') {
+          allMembersFilled = false;
+        }
+      });
+
+      if (familyName !== '' && memberInputs.length > 0 && allMembersFilled) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        submitBtn.classList.add('hover:brightness-110', 'active:scale-95');
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        submitBtn.classList.remove('hover:brightness-110', 'active:scale-95');
+      }
+    }
+
+    function generateNameInputs(count) {
+      namesContainer.innerHTML = '';
+      for (let i = 1; i <= count; i++) {
+        const div = document.createElement('div');
+        div.className = "flex flex-col space-y-1 animate-fadeIn";
+        div.innerHTML = `
+          <label class="text-[11px] text-slate-400">Nombre Integrante ${i}:</label>
+          <input type="text" required placeholder="Nombre completo integrante ${i}" class="member-name w-full px-3 py-2 bg-burgundy-dark/60 border border-gold/20 rounded-lg text-xs text-slate-100 focus:outline-none focus:border-gold placeholder-slate-500">
+        `;
+        namesContainer.appendChild(div);
+      }
+
+      // Add input event listeners to newly created fields
+      document.querySelectorAll('.member-name').forEach(input => {
+        input.addEventListener('input', checkFormValidity);
+      });
+
+      checkFormValidity();
+    }
+
+    familyNameInput.addEventListener('input', checkFormValidity);
+
+    attendeeSelect.addEventListener('change', (e) => {
+      generateNameInputs(parseInt(e.target.value));
+    });
+
+    // Initialize with 1 input on load
+    generateNameInputs(1);
+
+    // 3. RSVP FORM & LOCALSTORAGE MANAGEMENT
+    const rsvpForm = document.getElementById('rsvp-form');
+    const rsvpMessage = document.getElementById('rsvp-message');
+    const STORAGE_KEY = 'posada_2026_confirmations';
+
+    function getConfirmations() {
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : [];
+    }
+
+    function saveConfirmation(newEntry) {
+      const confirmations = getConfirmations();
+      confirmations.push(newEntry);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(confirmations));
+    }
+
+    function renderAttendeesList() {
+      const confirmations = getConfirmations();
+      const attendeesList = document.getElementById('attendees-list');
+      const attendeesEmpty = document.getElementById('attendees-empty');
+      const totalGuestsCount = document.getElementById('total-guests-count');
+
+      let totalCount = 0;
+      attendeesList.innerHTML = '';
+
+      if (confirmations.length === 0) {
+        attendeesEmpty.classList.remove('hidden');
+      } else {
+        attendeesEmpty.classList.add('hidden');
+        confirmations.forEach((item, index) => {
+          totalCount += parseInt(item.count);
+
+          const card = document.createElement('div');
+          card.className = "bg-burgundy-dark/90 p-3 rounded-xl border border-gold/20 text-xs shadow-sm space-y-1";
+          
+          const memberListHtml = item.members.map(m => `<li class="text-slate-300 list-disc list-inside">${m}</li>`).join('');
+
+          card.innerHTML = `
+            <div class="flex justify-between items-center text-gold font-bold pb-1 border-b border-gold/10">
+              <span><i class="fa-solid fa-house-chimney text-[10px] mr-1"></i> ${item.family}</span>
+              <span class="bg-gold/20 text-gold px-2 py-0.5 rounded-full text-[10px]">${item.count} asist.</span>
+            </div>
+            <ul class="pt-1 space-y-0.5 text-[11px]">
+              ${memberListHtml}
+            </ul>
+          `;
+          attendeesList.appendChild(card);
+        });
+      }
+
+      totalGuestsCount.innerText = totalCount;
+    }
+
+    rsvpForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const familyName = familyNameInput.value.trim();
+      const count = attendeeSelect.value;
+      const memberInputs = document.querySelectorAll('.member-name');
+      const members = Array.from(memberInputs).map(input => input.value.trim()).filter(val => val !== '');
+
+      if (!familyName || members.length === 0) {
+        showMessage('Por favor completa todos los nombres requeridos.', 'error');
+        return;
+      }
+
+      try {
+        // Enviar al servidor de Python y PostgreSQL
+        const response = await fetch('/api/confirmar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre_familia: familyName,
+                integrantes: members
+            })
+        });
+
+        const resultado = await response.json();
+        
+        if (response.ok) {
+            showMessage(resultado.mensaje || `¡Gracias ${familyName}! Guardado en la BD. 🎉`, 'success');
+            rsvpForm.reset();
+            generateNameInputs(1);
+            
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        } else {
+            showMessage("Error: " + (resultado.error || "No se pudo guardar"), 'error');
+        }
+      } catch (error) {
+        console.error("Error de red:", error);
+        showMessage("Error al conectar con el servidor de Python.", 'error');
+      }
+    });
+
+    function showMessage(msg, type) {
+      rsvpMessage.innerText = msg;
+      rsvpMessage.classList.remove('hidden', 'bg-emerald-900/80', 'border-emerald-500', 'text-emerald-200', 'bg-rose-900/80', 'border-rose-500', 'text-rose-200');
+      
+      if (type === 'success') {
+        rsvpMessage.classList.add('bg-emerald-900/80', 'border-emerald-500', 'text-emerald-200');
+      } else {
+        rsvpMessage.classList.add('bg-rose-900/80', 'border-rose-500', 'text-rose-200');
+      }
+
+      setTimeout(() => {
+        rsvpMessage.classList.add('hidden');
+      }, 5000);
+    }
+
+    // 4. ACCORDEON TOGGLE FOR ATTENDEES LIST
+    const toggleBtn = document.getElementById('toggle-attendees');
+    const attendeesContainer = document.getElementById('attendees-list-container');
+    const chevronIcon = document.getElementById('chevron-icon');
+
+    toggleBtn.addEventListener('click', () => {
+      attendeesContainer.classList.toggle('hidden');
+      chevronIcon.classList.toggle('rotate-180');
+    });
+
+    // Initial render of saved attendees
+    renderAttendeesList();
+
+    // 5. CALENDAR LINK GENERATOR
+    const eventTitle = encodeURIComponent("Posada Navideña Tradicional 2026");
+    const eventDetails = encodeURIComponent("¡Acompáñanos a nuestra gran Posada Navideña! Habrá ponche, piñatas, cena y mucha diversión.");
+    const eventLocation = encodeURIComponent("Av. Revolución 123, San Ángel, CDMX");
+    
+    // Google Calendar URL string: 20261219T210000 / 20261220T020000
+    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=20261219T210000/20261220T020000&details=${eventDetails}&location=${eventLocation}`;
+    document.getElementById('btn-add-calendar').href = gCalUrl;
+
+    // 6. GOLDEN PARTICLES / SNOW ANIMATION ON CANVAS
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * -height;
+        this.size = Math.random() * 2.5 + 0.8;
+        this.speedY = Math.random() * 0.8 + 0.3;
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.opacity = Math.random() * 0.7 + 0.3;
+        // Color variation: Gold or Warm Light
+        this.color = Math.random() > 0.3 ? '#D4AF37' : '#FFF0B3';
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+
+        if (this.y > height) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.opacity;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = '#D4AF37';
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const particleCount = Math.min(Math.floor(width / 10), 60);
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.onload = function() {
+      initParticles();
+      animateParticles();
+    };
+
+// Asegúrate de que tu botón o formulario dispare esta función al hacer clic:
+async function enviarDatosFormulario() {
+    // 1. Obtener el nombre de la familia o representante
+    const nombreFamilia = document.getElementById('tu_input_familia').value; // Cambia por el ID real de tu input de familia
+
+    // 2. Obtener todos los nombres de los integrantes generados dinámicamente
+    const inputsIntegrantes = document.querySelectorAll('.input-integrante'); // Asegúrate de que tus inputs de integrantes tengan esta clase
+    const listaIntegrantes = Array.from(inputsIntegrantes).map(input => input.value);
+
+    // Validación básica en consola para ver qué datos se van a enviar
+    console.log("Enviando:", { nombreFamilia, listaIntegrantes });
+
+    try {
+        const response = await fetch('/api/confirmar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre_familia: nombreFamilia,
+                integrantes: listaIntegrantes
+            })
+        });
+
+        const resultado = await response.json();
+        
+        if (response.ok) {
+            alert(resultado.mensaje);
+            location.reload(); // Recarga la página para limpiar todo
+        } else {
+            alert("Error del servidor: " + resultado.error);
+        }
+    } catch (error) {
+        console.error("Error de red al conectar con Flask:", error);
+    }
+}
+
+    // Ejemplo de cómo enviar los datos recolectados al backend de Python
+async function enviarAsistencia(nombreFamilia, listaIntegrantes) {
+    try {
+        const response = await fetch('/api/confirmar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre_familia: nombreFamilia,
+                integrantes: listaIntegrantes
+            })
+        });
+
+        const resultado = await response.json();
+        if (response.ok) {
+            alert(resultado.mensaje);
+            // Aquí puedes recargar la lista o limpiar el formulario
+        } else {
+            alert("Error: " + resultado.error);
+        }
+    } catch (error) {
+        console.error("Error de red:", error);
+    }
+}
+  </script>
+</body>
+</html>
