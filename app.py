@@ -64,6 +64,32 @@ def confirmar_asistencia():
         print("Error al conectar con la base de datos:", e)
         return jsonify({"error": "Hubo un error al guardar los datos"}), 500
 
+@app.route('/admin/ver-lista')
+def ver_lista():
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        # Consultamos las familias y sus integrantes
+        cur.execute("""
+            f.id, f.nombre_familia, f.total_asistentes, 
+            STRING_AGG(i.nombre_completo, ', ') as integrantes
+            FROM public.familias f
+            LEFT JOIN public.integrantes i ON f.id = i.familia_id
+            GROUP BY f.id, f.nombre_familia, f.total_asistentes;
+        """)
+        resultados = cur.fetchall()
+        cur.close()
+        conn.close()
+
+        # Generamos una tabla HTML simple directamente en el navegador
+        html = "<h2>Familias Registradas</h2><table border='1' cellpadding='8'><tr><th>Familia</th><th>Total Asistentes</th><th>Integrantes</th></tr>"
+        for row in resultados:
+            html += f"<tr><td>{row[1]}</td><td>{row[2]}</td><td>{row[3] or 'Ninguno'}</td></tr>"
+        html += "</table><br><a href='/'>Volver al inicio</a>"
+        return html
+    except Exception as e:
+        return f"Error al consultar la base de datos: {e}"
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
 
