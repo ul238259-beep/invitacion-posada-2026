@@ -37,7 +37,7 @@ def confirmar_asistencia():
 
     try:
         # Conexión a PostgreSQL
-        conn = get_db_connection(**DB_CONFIG)
+        conn = get_db_connection()
         cur = conn.cursor()
 
         # 1. Insertar en la tabla familias y obtener el ID generado
@@ -58,11 +58,11 @@ def confirmar_asistencia():
         cur.close()
         conn.close()
 
-        return jsonify({"success": True, "mensaje": "¡Asistencia registrada correctamente en la base de datos!"})
+        return jsonify({"success": True, "mensaje": "¡Asistencia registrada correctamente!"})
 
     except Exception as e:
         print("Error al conectar con la base de datos:", e)
-        return jsonify({"error": "Hubo un error al guardar en la base de datos"}), 500
+        return jsonify({"error": "Hubo un error al guardar los datos"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
