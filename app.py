@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 # Función para conectar a la base de datos (lee la nube o usa local si no existe)
 def get_db_connection():
-    # Render nos dará una variable llamada DATABASE_URL
-    database_url = os.environ.get("postgresql://postgresql:3mTBUHUJs3HZtpsh70zk2eyXrOsHisVe@dpg-dblo8hd6e07s739gu6b0-a/posada_b4gz")
+    # Render busca la variable de entorno llamada "DATABASE_URL"
+    database_url = os.environ.get("DATABASE_URL")
     if database_url:
-        return get_db_connection(database_url)
+        return psycopg.connect(database_url)
     else:
         # Tus datos locales por si quieres probar en tu PC
-        return get_db_connection(
+        return psycopg.connect(
             dbname="postgres",
             user="postgres",
             password="postgres",
