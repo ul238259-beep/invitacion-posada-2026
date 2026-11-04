@@ -69,9 +69,9 @@ def ver_lista():
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        # Consultamos las familias y sus integrantes
+        # ¡Importante! Asegúrate de incluir la palabra SELECT aquí:
         cur.execute("""
-            f.id, f.nombre_familia, f.total_asistentes, 
+            SELECT f.id, f.nombre_familia, f.total_asistentes, 
             STRING_AGG(i.nombre_completo, ', ') as integrantes
             FROM public.familias f
             LEFT JOIN public.integrantes i ON f.id = i.familia_id
@@ -81,7 +81,6 @@ def ver_lista():
         cur.close()
         conn.close()
 
-        # Generamos una tabla HTML simple directamente en el navegador
         html = "<h2>Familias Registradas</h2><table border='1' cellpadding='8'><tr><th>Familia</th><th>Total Asistentes</th><th>Integrantes</th></tr>"
         for row in resultados:
             html += f"<tr><td>{row[1]}</td><td>{row[2]}</td><td>{row[3] or 'Ninguno'}</td></tr>"
