@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify,redirect, url_for
 import psycopg
 
 app = Flask(__name__)
@@ -69,7 +69,6 @@ def ver_lista():
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        # ¡Importante! Asegúrate de incluir la palabra SELECT aquí:
         cur.execute("""
             SELECT f.id, f.nombre_familia, f.total_asistentes, 
             STRING_AGG(i.nombre_completo, ', ') as integrantes
@@ -81,13 +80,26 @@ def ver_lista():
         cur.close()
         conn.close()
 
-        html = "<h2>Familias Registradas</h2><table border='1' cellpadding='8'><tr><th>Familia</th><th>Total Asistentes</th><th>Integrantes</th></tr>"
+        html = "<h2>Familias Registradas</h2><table border='1' cellpadding='8'><tr><th>Familia</th><th>Total Asistentes</th><th>Integrantes</th><th>Acciones</th></tr>"
         for row in resultados:
-            html += f"<tr><td>{row[1]}</td><td>{row[2]}</td><td>{row[3] or 'Ninguno'}</td></tr>"
+            html += f"<tr><td>{row[1]}</td><td>{row[2]}</td><td>{row[3] or 'Ninguno'}</td><td><a href='/admin/eliminar/{row[0]}' onclick='return confirm(\"¿Estás seguro de eliminar este registro?\")' style='color:red;'>Eliminar</a></td></tr>"
         html += "</table><br><a href='/'>Volver al inicio</a>"
         return html
     except Exception as e:
         return f"Error al consultar la base de datos: {e}"
+
+@app.route('/admin/eliminar/<int:id_familia>')
+def eliminar_familia(id_familia):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("DELETE FROM public.familias WHERE id = %s;", (id_familia,))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect('/admin/ver-lista')
+    except Exception as e:
+        return f"Error al eliminar el registro: {e}"
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
